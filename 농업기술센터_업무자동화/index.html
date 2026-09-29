@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 외부 인터넷 호출 전면 차단 (로컬 127.0.0.1 서버만 허용) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' http://127.0.0.1:8765; font-src 'self' data:;">
+  <title>농업기술센터 로컬 업무자동화 포털</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 좌측 사이드바 -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <div class="sidebar-brand-icon">🌱</div>
+          <div class="sidebar-brand-text">
+            <h1>농업기술센터 포털</h1>
+            <p>로컬 업무자동화 시스템</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 메뉴 검색창 -->
+      <div class="sidebar-search">
+        <input type="text" id="menu-search-input" placeholder="🔍 30개 업무기능 빠른 검색..." autocomplete="off">
+      </div>
+
+      <!-- 메뉴 네비게이션 (30개 기능) -->
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <!-- app.js의 AppRouter에서 동적으로 렌더링 됨 -->
+      </nav>
+
+      <!-- 사이드바 푸터 (보안 상태 안내) -->
+      <div class="sidebar-footer">
+        <div class="secure-badge">
+          <span class="secure-dot"></span>
+          <span>100% 로컬 오프라인 작동</span>
+        </div>
+        <div>외부 전송 없는 PC 내부 처리</div>
+      </div>
+    </aside>
+
+    <!-- 우측 메인 작업 영역 -->
+    <main class="main-wrapper">
+      <!-- 상단 헤더 -->
+      <header class="top-header">
+        <div class="header-title-area">
+          <h2 id="header-title">농업기술센터 로컬 업무자동화 포털</h2>
+          <p id="header-subtitle">외부 전송 없는 PC 내부 업무처리 도구</p>
+        </div>
+
+        <div class="header-security-notice">
+          <button class="btn btn-sm btn-primary no-print" onclick="window.openSampleModal()" title="테스트용 샘플 CSV 파일을 다운로드합니다" style="font-size: 13px; height: 36px; padding: 0 14px; font-weight: bold; background: #0284c7; border: none; cursor: pointer;">
+            📁 샘플데이터 다운로드
+          </button>
+
+          <div class="security-tag" title="인터넷 연결 없이 브라우저 내부에서만 연산합니다.">
+            <span class="secure-dot"></span>
+            <span>로컬 처리 중 (외부 통신 없음)</span>
+          </div>
+
+          <div style="font-size: 11.5px; color: var(--text-muted); max-width: 280px; line-height: 1.3;" class="no-print">
+            모든 데이터는 현재 PC 브라우저 내부에서만 처리되며 외부로 전송되지 않습니다.
+          </div>
+
+          <div class="header-actions">
+            <button class="btn-icon" id="btn-toggle-theme" title="다크 모드 / 라이트 모드 전환">🌙</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- 메인 콘텐츠 영역 (동적 모듈 로드) -->
+      <div class="content-area">
+        <div id="module-content">
+          <!-- 모듈의 render() 함수가 이곳에 내용을 주입합니다 -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 토스트 및 로딩 인디케이터 컨테이너 -->
+  <div id="toast-container" class="toast-container"></div>
+  <div id="global-loader" class="global-loader-backdrop"></div>
+
+  <!-- 100% 로컬 오프라인 스크립트 로드 (외부 CDN 없음) -->
+  <script src="assets/libs/simple-zip.js"></script>
+  <script src="assets/libs/simple-qrcode.js"></script>
+  <script src="assets/core-utils.js"></script>
+  <script src="assets/modules/data-tools-1.js"></script>
+  <script src="assets/modules/data-tools-2.js"></script>
+  <script src="assets/modules/file-tools.js"></script>
+  <script src="assets/modules/text-tools.js"></script>
+  <script src="assets/modules/report-tools.js"></script>
+  <script src="assets/modules/utility-tools.js"></script>
+  <script src="assets/modules/ai-local-tools.js"></script>
+  <script src="assets/app.js"></script>
+  <script src="assets/sample-data.js"></script>
+</body>
+</html>
